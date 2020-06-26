@@ -1,0 +1,916 @@
+<!DOCTYPE >
+<html>
+<head>
+
+<title>Системы фильтрации воды</title>
+
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<!--meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"-->
+
+<link rel="stylesheet" media="all" href="css/libs.css">
+<link rel="stylesheet" media="all" href="css/font.min.css">
+<link rel="stylesheet" media="all" href="css/style.min.css">
+
+<script src='js/libs.js'></script>
+<script src='js/script.min.js'></script>
+
+<!--[if lt IE 9]>
+    <style>
+
+    </style>
+<![endif]-->
+
+<script>
+	$(document).ready(function(){
+		$(".jsColor").click(function(){
+			var model = $(this).attr("model");
+			var img = $(this).closest(".product").find("img");
+			img.attr("src", 'images/products/' + model + '.png');
+		});	
+	});
+
+
+</script>
+
+<script>
+
+    function send_form(a){
+
+      	var name_client = $('.' + a + ' input[name="nameClient"]').val();
+      	var phone_client = $('.' + a + ' input[name="phoneClient"]').val();
+      	var model = $('.' + a + ' select[name="model"]').val();
+      	var color = $('.' + a + ' select[name="modelColor"]').val();
+
+      	if (name_client && phone_client) {
+		    $.ajax({
+	            type: "POST",
+	            url: "forma.php",
+	            data: {
+	                name_client: name_client,
+	                phone_client: phone_client,
+                	model: model,
+                	color: color
+            	},
+            	success: function(data) {
+                	$('.' + a).html(data);
+                	$('.norequired').removeClass('norequired_active');
+            	}
+        	});
+		} else {
+			$('.norequired').addClass('norequired_active');
+			$('.norequired').html('<div class="uk-text-center" >Заполните поле Имя и Телефон</div>');
+		}
+	}
+</script>
+<style>
+.norequired {
+    display: none;
+}
+
+.norequired_active {
+    display: block;
+    text-align: center;
+    color: #a20808;
+    background: #fff;
+    width: 300px;
+    margin: 0 auto;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+</style>
+</head>
+<body>
+
+<div class='header'>
+<div class='headerGradient'>
+	<div class='container'>
+		<div class='row'>
+			<div class='col-xs-9'>
+				<div class='blockTitle blockTitle_header'>
+					<div class='blockTitle__icon icon icon_clock'></div>
+					<div class='blockTitle__text blockTitle__text_light blockTitle__text_header'>
+						Детские часы с GPS трекером<span>Baby Watch</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class='row'>
+			<div class='offsetblock'>
+				<div class='col-xs-8'>
+					<div class='offer offer_1'>Ликвидация склада</div>
+				</div>
+			</div>
+		</div>
+		<div class='row'>
+			<div class='offsetblock'>
+				<div class='col-xs-8'>
+					<div class='offer offer_2'>Скидка 40%</div>
+				</div>
+			</div>
+		</div>
+
+		<div class='row'>
+			<div class='offsetblock'>
+				<div class='col-xs-8'>
+					<div class='headContacs'>
+						<div class='headContacs__button'>
+							<a href='#form' data-uk-modal class='button button_big button_line button_line-light' onclick='getModel()'>Получить скидку</a>
+						</div>
+						<div class='headContacs__contact'>
+							<div>Номер склада</div>
+							<a href=''>+7 495 342-32-45</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>	
+</div>
+
+
+<div class='container block'>
+	<div class='row'>
+		<div class='col-xs-9'>
+			<div class='blockTitle blockTitle_header'>
+				<div class='blockTitle__icon blockTitle__icon_energized icon icon_sign'></div>
+				<div class='blockTitle__text'>
+					Будьте спокойны за своего ребенка!
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class='row'>
+		<div class='offsetblock block__inset'>
+			<div class='col-xs-12'>
+				<div class='strokeLeftItem'>
+					<div class='strokeLeftItem__item'>
+						Кнопка SOS моментально отправит сообщения о помощи и звонок на телефоны родителей
+					</div>
+					<div class='strokeLeftItem__item'>
+						Свяжитесь с ребенком в любой момент
+					</div>
+					<div class='strokeLeftItem__item'>
+						Контролируйте, чем занимается ребенок в данный момент с функцией "тайный звонок"
+					</div>
+					<div class='strokeLeftItem__item'>
+						Отправляйте ребенку короткие голосовые сообщения
+					</div>
+					<div class='strokeLeftItem__item'>
+						Будильник, шагомер, заряд батареи. Часы выполнены из прочного корпуса и имеют противоударное стекло
+					</div>
+					<div class='strokeLeftItem__item'>
+						Покажет точное местоположение и маршрут ребенка. Оповестит о заверщении маршрута
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class='alertBlock'>
+	<div class='blackBack'>
+		<div class='container block'>
+			<div class='row'>
+				<div class='col-xs-9'>
+					<div class='blockTitle blockTitle_header'>
+						<div class='blockTitle__icon blockTitle__icon_energized icon icon_like'></div>
+						<div class='blockTitle__text blockTitle__text_light'>
+							Вы меньше тревожитесь за ребенка, пока он не рядом
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class='row'>
+				<div class='offsetblock block__inset'>
+					<div class='col-xs-7'>
+						<div class='squareLeftItem'>
+							<div class='squareLeftItem__item'>
+								В любой момент времени вы на голосовой связи c ребенком
+							</div>
+							<div class='squareLeftItem__item'>
+								При желании вы можете слышать все, что происходит рядом с ребенком
+							</div>
+							<div class='squareLeftItem__item'>
+								Автоматическое оповещение при отдалении ребенка
+							</div>
+							<div class='squareLeftItem__item'>
+								При опасности, ребенок нажимает на кнопку SOS и вы на связи
+							</div>
+							<div class='squareLeftItem__item'>
+								Получение уведомления об успешном завершении маршрута ребенка, например, от школы до дома
+							</div>
+							<div class='squareLeftItem__item'>
+								Часы-телефон сложнее потерять, где-то оставить. Часы всегда на руке
+							</div>
+							<div class='squareLeftItem__item'>
+								В любой момент вы видите на карте, где находится ребенок
+							</div>
+							<div class='squareLeftItem__item'>
+								Просмотр истории перемещения ребенка
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>	
+	</div>	
+</div>
+
+
+<div class='container block'>
+	<div class='row'>
+		<div class='col-xs-9'>
+			<div class='blockTitle blockTitle_header'>
+				<div class='blockTitle__icon blockTitle__icon_energized icon icon_info'></div>
+				<div class='blockTitle__text'>
+					Оцените все риски
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class='row'>
+		<div class='offsetblock block__inset'>
+			<div class='col-xs-4'>
+				<div class='numberBlock'>
+					<div class='numberBlock__num'>35%</div>
+					<div class='numberBlock__text'>Общение с незнакомцами</div>
+				</div>
+			</div>
+			<div class='col-xs-4'>
+				<div class='numberBlock'>
+					<div class='numberBlock__num'>8%</div>
+					<div class='numberBlock__text'>Моральное, физическое насилие</div>
+				</div>
+			</div>
+			<div class='col-xs-4'>
+				<div class='numberBlock'>
+					<div class='numberBlock__num'>15%</div>
+					<div class='numberBlock__text'>Ребенка могут увести или похитить</div>
+				</div>
+			</div>
+
+			<div class='col-xs-4'>
+				<div class='numberBlock'>
+					<div class='numberBlock__num'>2%</div>
+					<div class='numberBlock__text'>Потеряться в толпе, отстать в магазине</div>
+				</div>
+			</div>
+			<div class='col-xs-4'>
+				<div class='numberBlock'>
+					<div class='numberBlock__num'>10%</div>
+					<div class='numberBlock__text'>Риск заблудиться на улице</div>
+				</div>
+			</div>
+			<div class='col-xs-4'>
+				<div class='numberBlock'>
+					<div class='numberBlock__num'>5%</div>
+					<div class='numberBlock__text'>Неконтролируемые прогулы школы</div>
+				</div>
+			</div>
+
+			<div class='col-xs-4'>
+				<div class='numberBlock'>
+					<div class='numberBlock__num'>10%</div>
+					<div class='numberBlock__text'>Отсутствие связи с родителями</div>
+				</div>
+			</div>
+			<div class='col-xs-4'>
+				<div class='numberBlock'>
+					<div class='numberBlock__num'>5%</div>
+					<div class='numberBlock__text'>Обман родителей о роде занятий</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class='energizedBlock'>
+	<div class='energizedBlock__girl'>
+		<div class='container block'>
+			<div class='row'>
+				<div class='col-xs-9'>
+					<div class='blockTitle blockTitle_header'>
+						<div class='blockTitle__icon blockTitle__icon_white icon icon_security'></div>
+						<div class='blockTitle__text'>
+							Вы получаете
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class='row'>
+				<div class='offsetblock block__inset'>
+					<div class='col-xs-5'>
+						<div class='dashedLine'>100% оригинальные часы!</div>
+						<div class='dashedLine'>Бесплатная доставка по всей россии</div>
+						<div class='dashedLine'>Отправка Ваших часов в день заказа</div>
+						<div class='dashedLine'>Возврат денег</div>
+					</div>
+					<div class='col-xs-5'>
+						<div class='dashedLine'>Техническая поддержка и помощь в настройке</div>
+						<div class='dashedLine'>Мы не торгуем подделками</div>
+						<div class='dashedLine'>Помощь и консультация</div>
+					</div>
+				</div>
+			</div>
+		</div>	
+	</div>
+</div>
+
+
+<div class='container block'>
+	<div class='row'>
+		<div class='col-xs-10'>
+			<div class='blockTitle blockTitle_header'>
+				<div class='blockTitle__icon icon icon_clock icon_clock-energized'></div>
+				<div class='blockTitle__text'>
+					Выберите свои часы
+				</div>
+				<div class='blockTitle__gift'>
+					+ Подарок
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class='row'>
+		<div class='offsetblock block__inset'>
+			<div class='col-xs-4'>
+				<div class='product'>
+					<div class='product__header'>
+						<div class='product__gift icon icon_gift'></div>
+						<div class='product__name'>
+							q50
+						</div>
+					</div>
+					<div class='product__img'>
+						<img src='images/products/q50_green.png'>
+					</div>
+					<div class='product__color'>
+						<div class='product__colorText'>Расцветки</div>
+						<div class='color product__colors'>
+							<div class='color__item color__item_white jsColor' model='q50_white'></div>
+							<div class='color__item color__item_green jsColor' model='q50_green'></div>
+							<div class='color__item color__item_blue jsColor' model='q50_blue'></div>
+							<div class='color__item color__item_pink jsColor' model='q50_pink'></div>
+							<div class='color__item color__item_darkBlue jsColor' model='q50_darkBlue'></div>
+							<div class='color__item color__item_black jsColor' model='q50_black'></div>
+						</div>
+					</div>
+					<div class='product__newPrice'>
+						2500 р.
+					</div>
+					<div class='product__price'>
+						4 600 р.
+					</div>
+					<a href='#modal' data-uk-modal class='product__readMore' onclick='getParams("q50")'>Подробнее</a>
+					<div class='product__modalForm'>
+						<a href='#form' data-uk-modal class='btnaction' onclick='getModel("q50")'>Получить скидку</a>
+					</div>
+				</div>
+			</div>
+
+
+			<div class='col-xs-4'>
+				<div class='product product_hit'>
+					<div class='product__header'>
+						<div class='product__gift icon icon_gift'></div>
+						<div class='product__name'>
+							q60
+						</div>
+					</div>
+					<div class='product__img'>
+						<img src='images/products/q60_blue.png'>
+					</div>
+					<div class='product__color'>
+						<div class='product__colorText'>Расцветки</div>
+						<div class='color product__colors'>
+							<div class='color__item color__item_yellow jsColor' model='q60_yellow'></div>
+							<div class='color__item color__item_blue jsColor' model='q60_blue'></div>
+							<div class='color__item color__item_pink jsColor' model='q60_pink'></div>
+						</div>
+					</div>
+					<div class='product__newPrice'>
+						2500 р.
+					</div>
+					<div class='product__price'>
+						4 600 р.
+					</div>
+					<a href='#modal' data-uk-modal class='product__readMore' onclick='getParams("q60")'>Подробнее</a>
+					<div class='product__modalForm'>
+						<a href='#form' data-uk-modal class='btnaction' onclick='getModel("q60")'>Получить скидку</a>
+					</div>
+				</div>
+			</div>
+
+			<div class='col-xs-4'>
+				<div class='product'>
+					<div class='product__header'>
+						<div class='product__gift icon icon_gift'></div>
+						<div class='product__name'>
+							q80
+						</div>
+					</div>
+					<div class='product__img'>
+						<img src='images/products/q80_yellow.png'>
+					</div>
+					<div class='product__color'>
+						<div class='product__colorText'>Расцветки</div>
+						<div class='color product__colors'>
+							<div class='color__item color__item_yellow jsColor' model='q80_yellow'></div>
+							<div class='color__item color__item_blue jsColor' model='q80_blue'></div>
+							<div class='color__item color__item_pink jsColor' model='q80_pink'></div>
+						</div>
+					</div>
+					<div class='product__newPrice'>
+						2500 р.
+					</div>
+					<div class='product__price'>
+						4 600 р.
+					</div>
+					<a href='#modal' data-uk-modal class='product__readMore' onclick='getParams("q80")'>Подробнее</a>
+					<div class='product__modalForm'>
+						<a href='#form' data-uk-modal onclick='getModel("q80")' class='btnaction'>Получить скидку</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class='row'>
+		<div class='offsetblock block__inset'>
+			<div class='col-xs-6 col-xs-offset-3'>
+				<div class='doubleSale'>
+					<p class='doubleSale__item'>При покупке 2х часов даем</p>
+					<p class='doubleSale__item'>дополнительную скидку 10%</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>		
+
+<div class='container block'>
+	<div class='row'>
+		<div class='col-xs-10'>
+			<div class='blockTitle blockTitle_header'>
+				<div class='blockTitle__icon blockTitle__icon_energized icon icon_gift'></div>
+				<div class='blockTitle__text'>
+					Получи подарок!
+				</div>
+			</div>
+		</div>
+	</div>	
+	<div class='row'>
+		<div class='offsetblock block__inset'>
+			<div class='col-xs-6'>
+				<div class='giftBlock'>
+					<div class='giftBlock__item'>Зарядное устройство</div>
+					<div class='giftBlock__name'>
+						<div>Power</div>
+						<div>bank</div>
+					</div>
+				</div>
+			</div>
+			<div class='col-xs-6'>
+				<img src='images/powerBank.png'>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class='question'>
+	<div class='question__black'>
+		<div class='container block'>
+			<div class='row'>
+				<div class='col-xs-9'>
+					<div class='blockTitle blockTitle_header'>
+						<div class='blockTitle__icon blockTitle__icon_energized icon icon_info'></div>
+						<div class='blockTitle__text blockTitle__text_light'>
+							Зачем часы, если есть телефон?
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class='row'>
+				<div class='offsetblock block__inset'>
+					<div class='col-xs-6'>
+						<div class='solidBLock'>
+							<div class='strokeLeftItem'>
+								<div class='strokeLeftItem__item strokeLeftItem__item_big strokeLeftItem__item_light'>
+									Связь с родителями при нажатии кнопки
+								</div>
+								<div class='strokeLeftItem__item strokeLeftItem__item_big strokeLeftItem__item_light'>
+									Смс-оповещение при снятии часов
+								</div>
+								<div class='strokeLeftItem__item strokeLeftItem__item_big strokeLeftItem__item_light'>
+									Смс-оповещение при разрядке часов
+								</div>
+								<div class='strokeLeftItem__item strokeLeftItem__item_big strokeLeftItem__item_light'>
+									Звонки только из телефонной книги
+								</div>
+								<div class='strokeLeftItem__item strokeLeftItem__item_big strokeLeftItem__item_light'>
+									Ребенок всегда под контролем
+								</div>
+								<div class='strokeLeftItem__item strokeLeftItem__item_big strokeLeftItem__item_light'>
+									Ребенок не сможет выключить часы
+								</div>
+								<div class='strokeLeftItem__item strokeLeftItem__item_big strokeLeftItem__item_light'>
+									Часы работают в любом месте
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class='vs'>
+						<div class='vs__inset'>
+							vs
+						</div>
+					</div>
+
+					<div class='col-xs-6'>
+						<div class='solidBLock'>
+							<div class='strokeLeftItem'>
+								<div class='strokeLeftItem__item strokeLeftItem__item_big strokeLeftItem__item_light'>
+									Телефон привлекает карманных воров
+								</div>
+								<div class='strokeLeftItem__item strokeLeftItem__item_big strokeLeftItem__item_light'>
+									Быстро разряжается от приложений
+								</div>
+								<div class='strokeLeftItem__item strokeLeftItem__item_big strokeLeftItem__item_light'>
+									Ребенок много пользуется интернетом
+								</div>
+								<div class='strokeLeftItem__item strokeLeftItem__item_big strokeLeftItem__item_light'>
+									Поступают звонки от посторонних
+								</div>
+								<div class='strokeLeftItem__item strokeLeftItem__item_big strokeLeftItem__item_light'>
+									Возможность потери устройства
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>	
+	</div>	
+</div>
+
+
+<div class='container block'>
+	<div class='row'>
+		<div class='col-xs-10'>
+			<div class='blockTitle blockTitle_header'>
+				<div class='blockTitle__icon blockTitle__icon_energized icon icon_answer'></div>
+				<div class='blockTitle__text'>
+					Ответы на часто задаваемые вопросы
+				</div>
+			</div>
+		</div>
+	</div>	
+	<div class='row'>
+		<div class='offsetblock block__inset'>
+			<div class='col-xs-6'>
+				<div class='questionLine'>
+					<div class='questionLine__title'>Это оригинал? Как определить оригинал?</div>
+					<div class='questionLine__text'>Да, у нас оригинальные часы. Отличить оригинал от подделки просто - каждым часам присваивается уникальный ID номер, заводом изготовителем. Он указан на обратной стороне часов. Зарегистрировать часы-телефон можно только с этим кодом! Внешний же вид часов может различаться, изготовитель может менять цвет некоторых деталей или добавлять конструктивные улучшения от партии к партии.</div>
+				</div>
+
+				<div class='questionLine'>
+					<div class='questionLine__title'>Сложно ли настроить часы? Смогу я это сделать самостоятельно?</div>
+					<div class='questionLine__text'>В комплекте с часами идет инструкция на русском языке, делайте все по ней и проблем по настройке не возникнет. Также много информации по часам есть в интернете. И конечно, можно позвонить нам за консультацией.</div>
+				</div>
+
+				<div class='questionLine'>
+					<div class='questionLine__title'>Часы Baby Watch - могут работать как телефон?</div>
+					<div class='questionLine__text'>Да! Это не просто умные часы для детей, это еще и полноценный телефон! Вы можете позвонить ребенку, он может позвонить вам. В телефонную книгу можно записать до 10 номеров. Разговор происходит по громкой связи.</div>
+				</div>
+
+				<div class='questionLine'>
+					<div class='questionLine__title'>Могу ли я прослушать что происходит у ребенка?</div>
+					<div class='questionLine__text'>Да! У детских часов с трекером есть одна очень полезная функция - скрытый (обратный звонок). Отправив запрос на часы, вы сможете послушать что происходит вокруг. На часах это никак не отображается! Функция есть на всех моделях!</div>
+				</div>
+
+				<div class='questionLine'>
+					<div class='questionLine__title'>Какого оператора и тариф выбрать?</div>
+					<div class='questionLine__text'>Часы работают с любым оператором, на тарифах которого есть поддержка 2G. По этой причине,с оператором TELE2 в Москве часы работать не будут. Также, есть перебои при работе на тарифе Smart Mini от МТС - его не рекомендуем! От МТС можно любой другой тариф линейки СМАРТ.</div>
+				</div>
+			</div>
+
+			<div class='col-xs-6'>
+				<div class='questionLine'>
+					<div class='questionLine__title'>Кто и где производит часы Smart Baby Watch?</div>
+					<div class='questionLine__text'>Часы разработаны и собираются в Китае. Есть несколько разных производителей и фабрик, самая известная и популярная Wonlex. Модели, представленные на нашем сайте, поставляются напрямую от данного производителя, зарекомендовавшего себя наилучшим образом по качеству.</div>
+				</div>
+
+				<div class='questionLine'>
+					<div class='questionLine__title'>Можно ли в них мыться? Детские часы водонепроницаемые?</div>
+					<div class='questionLine__text'>Часы - телефон обладают бытовой водонепроницаемостью. Это значит, что небольшие капли им не повредят, но мочить сильно не рекомендуется. На данный момент, модели часов с полной водозащитой еще не разработано.</div>
+				</div>
+
+				<div class='questionLine'>
+					<div class='questionLine__title'>Подойдет ли ремешок на очень маленькую детскую руку?</div>
+					<div class='questionLine__text'>Да, подойдет. На ремешке очень много делений, вплоть до самого минимального, который отлично застегнется и будет держаться на руке 3-х летнего ребенка.</div>
+				</div>
+
+				<div class='questionLine'>
+					<div class='questionLine__title'>В интернете много предложений с разными ценами. В чем разница?</div>
+					<div class='questionLine__text'>Дело в том, что часы производит несколько фабрик, с разным качеством и набором функций, даже в пределах одной модели. Например, умные часы Q80 могут идти с силиконовым ремешком или с ремешком из экокожи, коробочка может быть пластиковая (Wonlex) или картонная (другие производители), и прочее. Как правило, это сказывается на цене, и покупать часы трекер с явно заниженной ценой довольно рискованно. А некоторые продавцы могут делать наоборот, очень большую накрутку, продавая абсолютно одинаковую модель дороже рынка 30-50%.</div>
+				</div>
+
+				<div class='questionLine'>
+					<div class='questionLine__title'>Какую модель детских часов с трекером выбрать?</div>
+					<div class='questionLine__text'>
+						<p>Зависит от Ваших потребностей. Какие преимущества и недостатки существующих моделей?</p>
+						<p>Q50 - устаревшая модель,сложная в настройке,большая ошибка определения местоположения, но необычный дизайн</p>
+						<p>Q60 - цветной экран, удобная эксплуатация, высокая точность GPS, новый дизайн</p>
+						<p>Q80 - Новинка! Все функции Q60 + WiFI+сенсорный экран+удобные в эксплуатации,дороже предыдущих моделей.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>	
+
+
+
+<div class='shipping'>
+	<div class='shipping__black'>
+		<div class='container block'>
+			<div class='row'>
+				<div class='col-xs-9'>
+					<div class='blockTitle blockTitle_header'>
+						<div class='blockTitle__icon blockTitle__icon_energized icon icon_like'></div>
+						<div class='blockTitle__text blockTitle__text_light'>
+							Оформить заказ очень просто
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class='row'>
+				<div class='offsetblock block__inset'>
+					<div class='col-xs-3'>
+						<div class='shippingBlock'>
+							<div class='shippingBlock__title'>
+								1. Заказ
+							</div>
+							<div class='shippingBlock__text'>
+								Выберите модель часов и цвет. Отправьте форму.
+							</div>
+						</div>
+					</div>
+
+					<div class='col-xs-3'>
+						<div class='shippingBlock'>
+							<div class='shippingBlock__title'>
+								2. Оформление
+							</div>
+							<div class='shippingBlock__text'>
+								Наш менеджер свяжется с Вами для уточнение всех деталей.
+							</div>
+						</div>
+					</div>
+
+					<div class='col-xs-3'>
+						<div class='shippingBlock'>
+							<div class='shippingBlock__title'>
+								3. Доставка
+							</div>
+							<div class='shippingBlock__text'>
+								Доставим Ваш заказ в любую точку России удобным для Вас способом.
+							</div>
+						</div>
+					</div>
+
+					<div class='col-xs-3'>
+						<div class='shippingBlock'>
+							<div class='shippingBlock__title'>
+								4. Оплата
+							</div>
+							<div class='shippingBlock__text'>
+								Оплата товара при получении. Вы ни чем не рискуете.
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>	
+	</div>
+</div>
+
+
+
+<div class='container block'>
+	<div class='row'>
+		<div class='col-xs-10'>
+			<div class='blockTitle blockTitle_header'>
+				<div class='blockTitle__icon blockTitle__icon_energized icon icon_customer'></div>
+				<div class='blockTitle__text'>
+					Отзывы покупателей
+				</div>
+			</div>
+		</div>
+	</div>	
+	<div class='row'>
+		<div class='offsetblock block__inset'>
+			<div class='col-xs-6'> 
+				<div class='quote'>
+					<div class='quote__title'>
+						Алексеева Наталья
+					</div>
+					<div class='quote__text'>
+						Благодаря этим часам я узнала, что ребенок после школы долгое время гуляет по городу, и часто в местах повышенной опасности: маршрут пролегал через трассы с интенсивным движением. Также несколько раз в "урочное время", когда он должен сидеть на уроке, сын покидал территорию школы. С ребенком и его друзьями была проведена беседа. Теперь порядок. Спасибо вам!
+					</div>
+				</div>
+			</div>
+
+			<div class='col-xs-6'> 
+				<div class='quote'>
+					<div class='quote__title'>
+						Ткачева Анастасия
+					</div>
+					<div class='quote__text'>
+						Нашей дочке 12 лет, отдали ее на репетиторство по математике и английскому языку, ездить приходится в другой район города в вечернее время. Но теперь, когда у нее на руке часы, я просто слежу за ее дорогой домой через GPS и знаю, что она легко сможет со мной связаться в любой экстренной ситуации. Полезный гаджет для родителей:) Спасибо вам еще раз!	
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>	
+
+
+<div class='footer'>
+	<div class='container block'>
+		<div class='row'>
+			<div class='col-xs-9'>
+				<div class='blockTitle blockTitle_header'>
+					<div class='blockTitle__icon icon icon_clock icon_clock-energized'></div>
+					<div class='blockTitle__text blockTitle__text_light'>
+						Закажите часы сейчас и получите скидку
+					</div>
+				</div>
+			</div>
+			<div class='col-xs-3'>
+				<div class='footer__button'> 
+					<a href='#form' data-uk-modal class='button button_big button_line button_line-light' onclick='getModel()'>Получить скидку</a>
+				</div>
+
+				<div class='developer'>
+					<div class='developer__name'>quotte.</div>
+					<div class='developer__secondName'>creative agency</div>
+					<a href='http://quotte.ru' class='developer__link'>Разработка сайтов</a>
+				</div>
+			</div>
+		</div>
+	</div>	
+</div>
+
+
+
+<div id="modal" class="uk-modal">
+	<div class="uk-modal-dialog">
+		<a class="uk-modal-close uk-close"></a>
+		<div class='modalProduct'>
+			<div class='modalProduct__title'></div>
+			<div class='modalProduct__list'>
+				<ul class='modalProduct__ul'></ul>
+			</div>
+		</div>
+	</div>	
+</div>
+
+
+<div id="form" class="uk-modal">
+	<div class="uk-modal-dialog">
+		<a class="uk-modal-close uk-close"></a>
+		<div class='sendForm'>
+			<form action='' method="POST">
+				<div class="norequired"></div>
+				<div class='sendForm__title'></div>
+				<div class='sendForm__models'></div>
+				<div class='sendForm__params'></div>
+				<div class='sendForm__item'>
+					<input type='text' name='nameClient' placeholder='Ваше имя'>
+				</div>	
+				<div class='sendForm__item'>
+					<input type='text' name='phoneClient' class='phone' placeholder='Ваш телефон'>
+				</div>
+				<div class='sendForm__item'>
+					<submit class='btnaction' onclick="send_form('sendForm');">Получить скидку</submit>
+				</div>	
+			</form>
+		</div>
+	</div>
+</div>		
+
+<script>
+var modelObj = {
+	q50: {
+		title: 'Smart Baby Watch Q50',
+		list: {
+			'Процессор': 'MTK 6261 364MHz',
+			'Диспей': '0.96 ” OLED 128×64',
+			'Размеры': '31 X 52 X 11.8мм',
+			'SIM карта': 'Микро SIM карта',
+			'Батарея': 'Литиевая батарея 400mAH, до 100 часов в режиме ожидания',
+			'Аксессуары': 'USB кабель и инструкция на русском языке'
+		},
+		colors: ['белый', 'зеленый', "голубой", "розовый", "темно-синий","черный"]
+	},
+	q60: {
+		title: 'Smart Baby Watch Q60',
+		list: {
+			'Экран':'0.96 дюйм LCD дисплей',
+			'Процессор':'MTK6261, 364MHZ',
+			'GPS':'GPS MTK3337, 22 канал',
+			'LBS':'L1, 1575.42MHZ C/A код',
+			'GSM,GPRS':'850/900/1800/1900',
+			'SIM карта':'Микро SIM карта',
+			'Батарея':'Литиевая батарея 400mAH, до 100 часов в режиме ожидания',
+			'Размеры':'44 x 38 x 15мм',
+			'Аксессуары':'USB кабель и инструкция на русском языке'
+		},
+		colors: ['желтый','голубой','розовый']
+	},
+	q80: {
+		title: 'Smart Baby Watch Q80',
+		list: {
+			'Процессор':'MTK2503D, 260MHZ',
+			'Дисплей':'1.22 дюймовый цветной дисплей',
+			'GPS':'BD2,1561.098MH/L1, 1575.42MHZ C/A код',
+			'Операционная система':'MTK G',
+			'WIFI':'WIFI локация',
+			'Размеры':'44 X 37 X 14мм',
+			'Батарея':'Литиевая батарея 400 mAH',
+			'Позиционирование':'GPS, AGPS, LBS, WIFI позиция',
+			'Аксессуары':'USB кабель и инструкция на русском языке'
+		},
+		colors: ['желтый','голубой','розовый']
+	}
+}
+
+
+function changeColor(a) {
+	
+		var value = $(a).val();
+		var elements = ['<div class="sendForm__select"><select name="modelColor">'];
+		for (var key in modelObj[value]['colors']) {
+			elements.push('<option value="'+modelObj[value]['colors'][key]+'">'+modelObj[value]['colors'][key]+'</option>');
+		}
+		elements.push('</select></div>');
+		$('.sendForm__params').html(elements.join(''));
+
+}
+
+function getModel(model) {
+	if (model == null) {
+		var models = ['<div class="sendForm__select"><select name="model" class="selectModel">'];
+		for (var key in modelObj) {
+			models.push('<option value="'+key+'">'+key+'</option>');
+		}
+		models.push('</select></div>');
+		$('.sendForm__models').html(models.join(''));
+
+		changeColor($(".selectModel"));
+
+		$(".selectModel").change(function(){
+			changeColor(this);
+		});
+
+		$('.sendForm__title').html('Заказать часы');
+	} else {
+		$('.sendForm__models').html('');
+
+
+		var elements = ['<div class="sendForm__select"><select name="modelColor">'];
+		for (var key in modelObj[model]['colors']) {
+			elements.push('<option value="'+modelObj[model]['colors'][key]+'">'+modelObj[model]['colors'][key]+'</option>');
+		}
+		elements.push('</select></div>');
+		$('.sendForm__params').html(elements.join(''));
+		$('.sendForm__title').html('Заказать часы Baby Smart Watch ' + model);
+	}
+}
+
+function getParams(model) {
+
+	$('.modalProduct__title').html(modelObj[model]['title']);
+	var elements = [];
+
+	for (var key in modelObj[model]['list']) {
+		elements.push('<li class="productModallistItem">' +
+				'<span class="productModallistItem__name">'+key+'</span>' +
+				'<span class="productModallistItem__value">'+modelObj[model]['list'][key]+'</span>' +
+			'</li>');
+	}
+
+	$('.modalProduct__ul').html(elements.join(''));
+}
+$(function($){
+   	$(".phone").mask("+7 (999) 999-99-99");
+});
+</script>
+</body>
+</html>
